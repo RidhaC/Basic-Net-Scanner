@@ -1,21 +1,21 @@
 # Network Scanner
 
-A command-line tool for analyzing hosts on a network using various scanning techniques including ICMP echo requests, TCP port scanning, and ARP scanning. This tool is designed for network administrators and security professionals to assess network configurations and identify potential vulnerabilities.
+A command-line based tool that helps you analyze hosts and services on a network using multiple scan techniques. It's built for system administrators and cybersecurity professionals to evaluate network configurations and identify potential risks.
 
 ## Features
 
--   **ICMP Echo Request (Ping) Scanning**: Quickly check the availability of hosts.
--   **TCP Port Scanning**: Identify open ports and services running on a host.
--   **ARP Network Scanning**: Discover devices on a local network.
--   **Configurable Scan Types and Timeouts**: Customize scans to suit your needs.
--   **Support for Port Ranges**: Scan specific ports or entire ranges.
--   **Detailed Scan Results Output**: Get comprehensive information about each scan.
+- **ICMP Ping Sweep**: Detect live hosts via ICMP echo requests.
+- **TCP Port Scanning**: Reveal open ports and detect running services.
+- **ARP Discovery**: Identify devices on the local subnet using ARP.
+- **Flexible Scan Modes and Timeouts**: Run quick scans or deep assessments with custom timeouts.
+- **Port Selection and Ranges**: Specify individual ports or port ranges to scan.
+- **Clear, Detailed Output**: View structured and informative scan results.
 
 ## Requirements
 
--   **Python 3.6 or higher**: Ensure you have the correct version of Python installed.
--   **Scapy 2.5.0 or higher**: Required for packet crafting and network interactions.
--   **Root/Administrator Privileges**: Necessary for raw socket operations.
+- **Python 3.6+**: Ensure Python is properly installed.
+- **Scapy >= 2.5.0**: Used for crafting and sending packets.
+- **Root/Admin Access**: Necessary for certain operations involving raw sockets.
 
 ## Installation
 
@@ -34,67 +34,67 @@ pip install -r requirements.txt
 
 ## Usage
 
-Basic usage:
+Run the scanner with the following format:
 
 ```bash
 python src/main.py <target> [options]
 ```
 
-### Examples
+### Example Commands
 
-1. **Scan a Single Host with All Scan Types**:
+- **Run all scan types on a single IP**:
 
 ```bash
 python src/main.py 192.168.1.1
 ```
 
-2. **Perform Only ICMP Scan**:
+- **Only ICMP (Ping) scan**:
 
 ```bash
 python src/main.py 192.168.1.1 -t icmp
 ```
 
-3. **Scan Specific Ports**:
+- **Scan selected ports**:
 
 ```bash
-python src/main.py 192.168.1.1 -p 80,443,8080
+python src/main.py 192.168.1.1 -p 22,80,443
 ```
 
-4. **Scan a Port Range**:
+- **Scan a port range**:
 
 ```bash
-python src/main.py 192.168.1.1 -p 1-1000
+python src/main.py 192.168.1.1 -p 1-1024
 ```
 
-5. **Scan a Network Subnet**:
+- **ARP scan on a subnet**:
 
 ```bash
 python src/main.py 192.168.1.0/24 -t arp
 ```
 
-### Command Line Options
+### Command-Line Arguments
 
--   `target`: Target IP address or network (required)
--   `-t, --type`: Type of scan to perform (choices: all, icmp, tcp, arp; default: all)
--   `-p, --ports`: Ports to scan (e.g., 80,443 or 1-1000)
--   `-T, --timeout`: Timeout in seconds for each scan (default: 2)
+- `target`: IP address or CIDR range to scan (**required**)
+- `-t`, `--type`: Type of scan to run (`icmp`, `tcp`, `arp`, or `all`) – default: `all`
+- `-p`, `--ports`: Specific ports or port ranges (e.g. `80,443` or `20-25`)
+- `-T`, `--timeout`: Response timeout per scan in seconds – default: `2`
 
-## Project Structure
+## Directory Structure
 
 ```
 network-scanner/
 ├── src/
-│   ├── main.py         # Command-line interface
-│   └── scanner.py      # Core scanning functionality
-├── tests/              # Test files
-├── docs/               # Documentation
-├── requirements.txt    # Project dependencies
-└── README.md           # Project documentation
+│   ├── main.py         # CLI interface
+│   └── scanner.py      # Scanning logic
+├── tests/              # Test scripts
+├── docs/               # Optional documentation
+├── requirements.txt    # Python libraries
+└── README.md           # Project instructions
 ```
 
-## Security Considerations
+## Security Notice
 
--   **Intrusive Nature**: This tool performs network scanning which may be considered intrusive.
--   **Permission**: Use only on networks you have permission to scan.
--   **Network Restrictions**: Some networks may block ICMP or ARP requests.
--   **Privileges**: Running the tool requires elevated privileges.
+- **Authorization Required**: Use this tool only on networks you have permission to scan.
+- **May Trigger Alerts**: Scanning can be flagged by intrusion detection/prevention systems.
+- **Some Scans May Fail**: Firewalls or host protections may block ICMP, TCP, or ARP traffic.
+- **Requires Elevated Privileges**: Depending on OS, some scan types need admin/root access.
