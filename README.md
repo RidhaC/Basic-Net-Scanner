@@ -87,7 +87,6 @@ network-scanner/
 │   ├── main.py         # CLI interface
 │   └── scanner.py      # Scanning logic
 ├── tests/              # Test scripts
-├── docs/               # Optional documentation
 ├── requirements.txt    # Python libraries
 └── README.md           # Project instructions
 ```
