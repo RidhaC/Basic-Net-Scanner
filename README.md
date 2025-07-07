@@ -23,7 +23,7 @@ A command-line based tool that helps you analyze hosts and services on a network
 
 ```bash
 git clone https://github.com/RidhaC/Basic-Net-Scanner.git
-cd network-scanner
+cd Basic-Net-Scanner
 ```
 
 2. **Install Dependencies**:
