@@ -22,7 +22,7 @@ A command-line based tool that helps you analyze hosts and services on a network
 1. **Clone the Repository**:
 
 ```bash
-git clone https://github.com/RidhaC/network-scanner.git
+git clone https://github.com/RidhaC/Basic-Net-Scanner.git
 cd network-scanner
 ```
 
